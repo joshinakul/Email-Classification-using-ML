@@ -15,11 +15,9 @@ def loading_data():
         print (number_of_emails)
         number_of_emails -= 1
     for i in range(len(all_words_in_dataset)):
-        if all_words_in_dataset[i].isalpha():
-            continue
-        else:
-            all_words_in_dataset[i] = 'no use'
-    words_with_frequencies = Counter(all_words_in_dataset)
-    del words_with_frequencies['no use']
+        if not all_words_in_dataset[i].isalpha():
+            all_words_in_dataset[i] = ""
+    words_with_frequencies = Counter(all_words_in_dataset) 
+    del words_with_frequencies[""]
     return words_with_frequencies.most_common(2500)
 

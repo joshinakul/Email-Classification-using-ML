@@ -13,15 +13,17 @@ def text_to_numbers(dict_converted_dataset):
         temp = []
         f = codecs.open(email,mode='r',encoding='utf-8',errors='ignore')
         words = f.read().split(' ')
-        for key,_ in dict_converted_dataset.items():
-            temp.append(words.count(key))
+        for word in dict_converted_dataset:
+            temp.append(words.count(word[0]))
         input_data.append(temp)
         if 'spam' in email:
             label_data.append(1)
-        elif 'ham' in email:
+        if 'ham' in email:
             label_data.append(0)
     print(number_of_emails)
     number_of_emails -= 1
+    print(len(input_data),len(label_data))
+
     return input_data,label_data
 
         
